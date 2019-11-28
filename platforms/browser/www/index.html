@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Your app title -->
+    <title>Roomator</title>
+
+    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+    <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+    <!-- Views -->
+    <div class="views">
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Top Navbar-->
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                    <div class="center sliding">Roomator App</div>
+                    <div class="right">
+                        <!--
+                          Right link contains only icon - additional "icon-only" class
+                          Additional "open-panel" class tells app to open panel when we click on this link
+                        -->
+                        <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+            <div class="pages navbar-through toolbar-through">
+                <!-- Page, "data-page" contains page name -->
+                <div data-page="index" class="page">
+                    <div class="swiper-container swiper-init demo-swiper">
+                        <div class="swiper-wrapper">
+
+                            <!-- Main Page -->
+                            <div class="swiper-slide" id="screen0">
+                                <div class="page-content">
+                                    <div class="content-block">
+                                        <div id="Home">
+                                            <div class="wlcm" id="welcome">Welcome!</div>
+                                            <div class="wlcm" id="welcome">Find your perfect Roommate</div>
+
+                                            <div class="block">
+                                                <p class="segmented segmented-round">
+                                                    <button id="buttonWelcome"
+                                                        class="col button button-fill button-round"
+                                                        onclick="LoginForm()">Login</button>
+                                                </p>
+                                                <p class="segmented segmented-round">
+                                                    <button id="buttonWelcome"
+                                                        class="col button button-fill button-round"
+                                                        onclick="Register()">Register</button>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Login Page -->
+                            <div class="swiper-slide" id="login">
+                                <div class="page-content">
+                                    <div class="content-block">
+                                        <div id="Home">
+                                            <div class="wlcm" id="welcome">Welcome!</div>
+                                            <div class="wlcm" id="welcome">Find your perfect Roommate</div>
+                                            </br>
+                                            <div>Username</br><input type=text id="username"></input></div>
+                                            <div>Password</br><input type=text id="password"></input></div>
+                                            <div id="message"></div>
+                                            </br>
+                                            <div class="block">
+                                                <p class="segmented segmented-round">
+                                                    <button id="buttonWelcome"
+                                                        class="col button button-fill button-round"
+                                                        onclick="Login()">Login</button>
+                                                </p>
+                                                <p class="segmented segmented-round">
+                                                    <button id="buttonWelcome"
+                                                        class="col button button-fill button-round"
+                                                        onclick="Register()">Register</button>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--login page-->
+                            <div class="swiper-slide" id="showRommies">
+                                <div class="page-content">
+                                    <div class="content-block">
+                                        <div id="Home">
+                                                <div>Find Roomates within (Km):</br><input type=text id="distance"></input></div>
+                                            <div class="block">
+                                                <p class="segmented segmented-round">
+                                                    <button id="buttonWelcome"
+                                                        class="col button button-fill button-round"
+                                                        onclick="findRoomator()">Find the perfect Roomate</button>
+                                                </p>
+                                                <p id="tabletitle"></p>
+                                                <p id="table"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!--registration page-->
+                            <div class="swiper-slide" id="register">
+                                <div class="page-content">
+                                    <div class="content-block">
+                                        <div id="Home">
+                                            </br>
+                                            <form>
+                                                Name <input type=text id="name"></input><br>
+                                                Password<input type="password" id="pass"><br>
+                                                Age <input type=number id="age"></input><br>
+                                                Select your hobby
+                                                <select id="hobbies">
+                                                    <option value="Swimming">Swimming</option>
+                                                    <option value="Reading">Reading</option>
+                                                    <option value="Traveling">Traveling</option>
+                                                    <option value="Singing">Singing</option>
+                                                    <option value="Gardening">Gardening</option>
+                                                </select>
+                                                <div>
+                                                    Are you a smoker?
+                                                    <input type="radio" name="smoker" id="smoker" value="true" checked>
+                                                    Yes
+                                                    <input type="radio" name="smoker" id="smoker" value="false"> No
+                                                </div>
+                                                <br>
+
+                                                <p>Your current location is:</p>
+                                                <div>long <input type=number id="longitud" value="disabled"
+                                                        disabled></input></div>
+                                                <div>lati <input type=number id="latitud" value="disabled"
+                                                        disabled></input></div>
+                                            </form>
+                                            </br>
+                                            <div class="block">
+                                                <p class="segmented segmented-round">
+                                                    <button id="buttonWelcome"
+                                                        class="col button button-fill button-round"
+                                                        onclick="submit()">Submit</button>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Link to another page -->
+                            <a href="about.html">Roomator App</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
+</body>
+
+</html>
